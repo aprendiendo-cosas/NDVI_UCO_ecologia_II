@@ -10,8 +10,6 @@
 
 ## Objetivos 
 
- 
-
 En esta práctica se plantéan los siguientes objetivos:
 
 + Disciplinares: Están relacionados con competencias propias de la ecología.
@@ -142,7 +140,10 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
   + Haz click en el botón del plugin que acabas de instalar.
   + Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 1999 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year".
   + Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
-  + 
+
+
+
+![graph](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/imagenes/graph.png)
 
 
 
@@ -154,75 +155,35 @@ Para contrastar nuestra hipótesis nos valdremos de los datos de densidad real t
 
 Con objeto de testar esta hipótesis haremos lo siguiente:
 
-- (1) Cargamos todas las imágenes con el NDVI máximo anual en QGIS. Para cargar las imágenes, abrimos un proyecto nuevo. Luego, desde el explorador de archivos arrastramos todas las imágenes con extensión *.tif* a la tabla de contenidos de QGIS. Esto hará que aparezcan listadas toas las capas. No necesitamos que se vean con colores 
+- (1) Cargamos todas las imágenes con el NDVI máximo anual en QGIS. Para cargar las imágenes, abrimos un proyecto nuevo. Luego, desde el explorador de archivos arrastramos todas las imágenes con extensión *.tif* a la tabla de contenidos de QGIS. Esto hará que aparezcan listadas todas las capas. No necesitamos que se vean con colores.
+- (2) En el menú raster, seleccionamos el "Raster calculator". Aparecerán todas las imágenes descritas así: *1999@1*. Esto indica que es la banda 1 de la imagen llamada 1999. Vamos a calcular el promedio de las 20 imágenes existentes según puedes ver a continuación. También has de indicar el nombre de la capa de salida, que será *promedio_ndvi.tif*. Asegúrate de seleccionar la carpeta donde estás guardando toda la información.
 
-
-
-
-+ Cálculo del NDVI promedio. Calculadora raster de QGIS.
-  + Cargamos todas las imágenes .tif en QGIS.
-  + Calculamos el promedio con la calculadora Raster.
-  + Creamos una imagen llamada promedio.tif
-+ Cálculo de la tendencia. R.
-
-
-
-
-
+```python
+("1999@1"+"2000@1"+"2001@1"+"2002@1"+"2003@1"+"2004@1"+"2005@1"+"2006@1"+"2007@1"+"2008@1"+"2009@1"+"2010@1"+"2011@1"+"2012@1"+"2013@1"+"2014@1"+"2015@1"+"2016@1"+"2017@1"+"2018@1")/20
 ```
 
-## Analisis de la serie temporal de NDVI del norte de Cordoba
-
-## Definimos directorio de trabajo y cargamos los paquetes necesarios
-setwd("/Users/fjbonet_trabajo/Google_Drive/4_docencia/eco_II_bio_uco/actos_docentes/P_NDVI_UCO_ecologia_II/preparacion")
-
-install.packages("Kendall")
-install.packages("rgdal")
-install.packages("raster")
-
-library(raster)
-library(rgdal)
-library(Kendall)
-
-
-## Empaquetamos todas las imagenes tiff generadas por GEE en una unica imagen multibanda
-lista_imagenes <- list.files(pattern='*.tif', full.names=TRUE)
-
-ndvis <- brick(stack(lista_imagenes))
-
-plot(ndvis)
-
-
-# Exportamos la imagen a tif
-writeRaster(ndvis, filename="ndvi_1999_2018.tif", format="GTiff", overwrite=TRUE)
-
-
-## Calculamos la serie temporal de todos los pixeles
-
-fun_k <-function(x){return(unlist(MannKendall(x)))}
-
-kendal_result <-calc(ndvis, fun_k)
-
-# Exportamos la tendencia (tau) a un tif
-
-writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRUE)
++ (3) Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
++ (4) Ahora puedes observar por tí mismo si hay cierta correlación visual entre la densidad que ves en la ortofoto y la que indica el NDVI. Lo que haremos a continuación es cuantificar ese nivel de correlación. Para ello construiremos una gráfica de dispersión que relacione, para cada punto de muestreo de campo, los valores de densidad con el NDVI. Pero para hacer esto necesitamos los datos de campo, así que no lo haremos en esta práctica. 
 
 
 
 
 
-```
+## Ejercicio
+
+
+Para evaluar en qué medida has entendido tanto la parte ecológica de esta práctica como las competencias de manejo de herramientas, deberás completar el siguiente ejercicio. 
+
+Usando las imágenes creadas durante la práctica, tienes que encontrar un punto en la zona de estudio amplia (Patriarca +  Sierra) en la que haya una tendencia negativa o positiva en el  funcionamiento de la vegetación y que dicho comportamiento pueda interpretarse  a través de cambios en la estructura de la  vegetación. Es decir, que la tendencia de NDVI se corresponda con  alteraciones estructurales en el ecosistema que puedas identificar  mediante las distintas ortofotos. Ej. Tendencia de NDVI negativa en  lugares donde en alguna ortofoto se vean síntomas de un incendio  forestal. Para hacer esto deberá de cargar, además de los resultados de la práctica, una serie de ortofotos con fechas desde 1999 hasta 2018. Estas ortofotos te ayudarán a comprender si los cambios que observas en el NDVI (funcionamiento ecosistémico) se corresponden o no con cambios estructurales en la vegetación (ej. incencios, reforestaciones ,etc.). [Aquí](http://www.juntadeandalucia.es/medioambiente/site/rediam/menuitem.aedc2250f6db83cf8ca78ca731525ea0/?vgnextoid=867122ad8470f210VgnVCM1000001325e50aRCRD&lr=lang_es) tienes una lista de las ortofotografías disponibles en Andalucía.
+
+Tienes que entregar un documento de word o libre office con lo siguiente:
+
+- Captura de pantalla en la que se vea el punto que has seleccionado, con una ortofoto de fondo y con la capa de tendencia de NDVI (*tau.tif*).
+- Gráfica de la serie temporal en ese punto. Para ello usa el plugin de QGIS descrito más arriba. 
+- Breve texto que explique la situación que has interpretado. Por ejemplo: en esta zona se observa una fuerte tendencia al crecimiento de la vegetación desde 2000. Eso se observa también en las ortofotos de la época. Creo que se debe a que la zona está recién reforestada.
+- Extra: Si además identificas algún otro lugar (y lo describes) en el que haya mucho NDVI (valores del promedio de NDVI altos) y tendencias descendentes (decaimiento forestal) tendrás mejor calificación.
 
 
 
 
 
-
-
- 
-
-
-
- 
-
- 
