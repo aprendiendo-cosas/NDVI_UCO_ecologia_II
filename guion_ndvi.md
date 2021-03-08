@@ -65,72 +65,14 @@ De manera más concreta, durante esta sesión haremos lo siguiente:
 
 + Descarga la siguiente información:
   + [Imágenes de NDVI anuales](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/NDVI_maximo_anual.zip). Es un archivo zip. Descomprímelo en la carpeta en la que vayas a trabajar.
-  + Proyecto de QGIS con conexiones a servicios web de ortofotos.
+  + [Proyecto de QGIS](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/ortofotos_wms.qgs.zip) con conexiones a servicios web de ortofotos. Ponlo en la misma carpeta en la que están las otras imágenes.
+  + [Delimitación del Patriarca](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/patriarca.zip). Es un fichero de formas poligonal que delimita la finca del Patriarca. Ponlo en la misma carpeta en la que has puesto el resto del material.
++ Cálculo del NDVI promedio. Calculadora raster de QGIS.
++ Cálculo de la tendencia. R.
 
  
 
- 
 
-+ hilo argumental
-  + actividad fotosintética como subrogado del funcionamiento ecosistémico. Y también como subrogado de la densidad de productores primarios.
-  + Vamos a trabajar con estos dos conceptos.
-  + Generalidades de teledetección.
-  + Definición de NDVI.
-  + Zona de estudio.
-  + construcción de una gráfica con la serie temporal de ndvi usando o bien la app de GEE o bien el plugin de QGIS.
-  + Analizamos ecológicamente esa gráfica. Y vemos dos componentes.
-    + NDVI promedio por píxel: ¿buen estimador de la densidad del bosque?
-    + Tendencia de NDVI. indicador de hacia dónde se desarrollará el bosque.
-  + cálculo del ndvi promedio en toda la serie temporal: calculadora de mapas.
-  + Cálculo de la tendencia NDVI: Man Kendall en R
-  + Análisis de resultados:
-    + Zonas con alta biomasa y tendencia hacia menos NDVI. Decaimiento forestal
-    + Tendencias muy negativas o muy positivas: comparar con ortofotos. Relación estructura- funcionamiento.
-  + ejercicios:
-    + el que ya hay: busca dos puntos e interpreta su evolución.
-    + relaciona el NDVI promedio de la serie con la densidad calculada en campo. Recta de regresióin.
-
-
-
- 
-
- 
-
-El flujo de trabajo que aplicaremos consta de los siguientes pasos:
-
-
-
-\3.   Importaremos las imágenes anteriores con RStudio y generaremos el primer producto de esta práctica: una imagen en formato tif con 18 bandas cada una de las cuales corresponde a un año de la serie temporal analizada. Esta imagen será visualizada con Quantum GIS y con un complemento especial que nos permitirá obtener una gráfica con la serie temporal de NDVI para cada punto de la imagen. Esto se puede ver en [este](https://www.youtube.com/watch?v=22dlKcNa_SI&feature=youtu.be) video.
-
-\4.   A partir de las imágenes anteriores se realizará un análisis de la tendencia de la serie temporal en cada píxel. Para ellos se aplicará la técnica de MannKendall utilizando RStudio. La técnica de MannKendall permite estimar la tendencia de una serie temporal, obteniéndose en este caso una nueva capa con el valor de dicha tendencia. Los valores cercanos a 1 indicarán tendencias positivas (más NDVI) y los cercanos a -1 tendencias negativas (menos NDVI). Para saber más de Man-Kendall puedes mirar [esta](https://cran.r-project.org/web/packages/Kendall/Kendall.pdf) web.
-
-\5.   Los resultados obtenidos (gráficas con la serie temporal de cada punto más mapa de tendencias generado por RStudio) nos permitirán conocer un poco mejor cómo ha evolucionado la actividad fotosintética de la vegetación en la zona de estudio. 
-
-\6.   Para visualizar la tendencia en el NDVI usaremos lo siguiente:
-
-·    El mapa de tendencias descrito anteriormente mostrará en una gama de colores las tendencias más positivas y más negativas en el NDVI.
-
-·    Además, mediante un complemento de QGIS podremos ver una gráfica con los valores de NDVI de cada punto de la zona de estudio. El complemento se llama "Temporal/Spectral Profile Tool Plugin"
-
- 
-
- 
-
-## Material a entregar
-
- 
-
-·    Encontrar un punto en la zona de estudio amplia (Patriarca + Sierra) en la que haya una tendencia negativa o positiva en el funcionamiento de la vegetación y que dicho comportamiento pueda interpretarse fácilmente a través de cambios en la estructura de la vegetación. Es decir, que la tendencia de NDVI se corresponda con alteraciones estructurales en el ecosistema que puedas identificar mediante las distintas ortofotos. Ej. Tendencia de NDVI negativa en lugares donde en alguna ortofoto se vean síntomas de un incendio forestal.
-
-·    ¿Qué tienes que entregar? Pegar en un Word un pantallazo de dicha zona que contenga:
-
-o  Tendencia según Mann Kendall (vista en QGIS)
-
-o  Ortofoto reciente (Para ello deberás de poner la capa anterior con cierta transparencia)
-
-o  Gráfica con la serie temporal de NDVI (según el complemento 
-
-o  Breve texto (un párrafo) explicativo.
 
  
 
