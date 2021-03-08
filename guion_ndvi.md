@@ -72,7 +72,54 @@ De manera más concreta, durante esta sesión haremos lo siguiente:
   + Calculamos el promedio con la calculadora Raster.
   + Creamos una imagen llamada promedio.tif
 + Cálculo de la tendencia. R.
-  + 
+
+
+
+
+
+```
+
+## Analisis de la serie temporal de NDVI del norte de Cordoba
+
+## Definimos directorio de trabajo y cargamos los paquetes necesarios
+setwd("/Users/fjbonet_trabajo/Google_Drive/4_docencia/eco_II_bio_uco/actos_docentes/P_NDVI_UCO_ecologia_II/preparacion")
+
+install.packages("Kendall")
+install.packages("rgdal")
+install.packages("raster")
+
+library(raster)
+library(rgdal)
+library(Kendall)
+
+
+## Empaquetamos todas las imagenes tiff generadas por GEE en una unica imagen multibanda
+lista_imagenes <- list.files(pattern='*.tif', full.names=TRUE)
+
+ndvis <- brick(stack(lista_imagenes))
+
+plot(ndvis)
+
+
+# Exportamos la imagen a tif
+writeRaster(ndvis, filename="ndvi_1999_2018.tif", format="GTiff", overwrite=TRUE)
+
+
+## Calculamos la serie temporal de todos los pixeles
+
+fun_k <-function(x){return(unlist(MannKendall(x)))}
+
+kendal_result <-calc(ndvis, fun_k)
+
+# Exportamos la tendencia (tau) a un tif
+
+writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRUE)
+
+
+
+
+
+```
 
 
 
