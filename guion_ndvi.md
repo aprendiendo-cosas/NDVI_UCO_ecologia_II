@@ -45,17 +45,27 @@ De manera más concreta, durante esta sesión haremos lo siguiente:
 
 
 
-Esta presentación describe con más detalle los conceptos teóricos que sustentan esta práctica. Y la siguiente figura muestra el resumen de las tareas a abordar.
+[Esta](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/presentaciones/teledeteccion.ppt) presentación describe con más detalle los conceptos teóricos que sustentan esta práctica. Y la siguiente figura muestra el resumen de las tareas a abordar.
+
+
+
+![resumen](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/imagenes/resumen.png)
 
 
 
 
 
+## Secuencia de acciones a realizar
 
 
 
+(esto está todavía incompleto)
 
 
+
++ Descarga la siguiente información:
+  + [Imágenes de NDVI anuales](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/NDVI_maximo_anual.zip). Es un archivo zip. Descomprímelo en la carpeta en la que vayas a trabajar.
+  + Proyecto de QGIS con conexiones a servicios web de ortofotos.
 
  
 
