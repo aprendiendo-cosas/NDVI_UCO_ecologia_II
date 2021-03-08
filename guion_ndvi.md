@@ -68,7 +68,17 @@ De manera más concreta, durante esta sesión haremos lo siguiente:
   + [Proyecto de QGIS](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/ortofotos_wms.qgs.zip) con conexiones a servicios web de ortofotos. Ponlo en la misma carpeta en la que están las otras imágenes.
   + [Delimitación del Patriarca](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/patriarca.zip). Es un fichero de formas poligonal que delimita la finca del Patriarca. Ponlo en la misma carpeta en la que has puesto el resto del material.
 + Cálculo del NDVI promedio. Calculadora raster de QGIS.
+  + Cargamos todas las imágenes .tif en QGIS.
+  + Calculamos el promedio con la calculadora Raster.
+  + Creamos una imagen llamada promedio.tif
 + Cálculo de la tendencia. R.
+  + 
+
+
+
+
+
+
 
  
 
