@@ -136,7 +136,7 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
 + (5) Vamos a construir un gráfico que muestra la tendencia de NDVI para cualquier píxel de la zona de estudio. Sigue estos pasos para ello:
 
   + Instala un plugin llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
-  + Selecciona la capa "_ndvi_1999_2020_" en QGIS.
+  + Selecciona la capa "_ndvi_1999_2018_" en QGIS.
   + Haz click en el botón del plugin que acabas de instalar.
   + Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 1999 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year".
   + Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
@@ -155,11 +155,11 @@ Para contrastar nuestra hipótesis nos valdremos de los datos de densidad real t
 
 Con objeto de testar esta hipótesis haremos lo siguiente:
 
-- (1) Cargamos todas las imágenes con el NDVI máximo anual en QGIS. Para cargar las imágenes, abrimos un proyecto nuevo. Luego, desde el explorador de archivos arrastramos todas las imágenes con extensión *.tif* a la tabla de contenidos de QGIS. Esto hará que aparezcan listadas todas las capas. No necesitamos que se vean con colores.
-- (2) En el menú raster, seleccionamos el "Raster calculator". Aparecerán todas las imágenes descritas así: *1999@1*. Esto indica que es la banda 1 de la imagen llamada 1999. Vamos a calcular el promedio de las 20 imágenes existentes según puedes ver a continuación. También has de indicar el nombre de la capa de salida, que será *promedio_ndvi.tif*. Asegúrate de seleccionar la carpeta donde estás guardando toda la información.
+- (1) Cargamos el archivo llamado *ndvi_1999_2018.tif* en QGIS (probablemente ya lo tengas cargado de antes...). 
+- (2) En el menú raster, seleccionamos el "Raster calculator". Aparecerán todas las bandas de la imagen anterior, así: *ndvi_1999_2018@1*. Esto indica que es la banda 1 de la imagen llamada *ndvi_1999_2018.tif* . Vamos a calcular el promedio de las 20 bandas existentes según puedes ver a continuación. También has de indicar el nombre de la capa de salida, que será *promedio_ndvi.tif*. Asegúrate de seleccionar la carpeta donde estás guardando toda la información.
 
 ```python
-("1999@1"+"2000@1"+"2001@1"+"2002@1"+"2003@1"+"2004@1"+"2005@1"+"2006@1"+"2007@1"+"2008@1"+"2009@1"+"2010@1"+"2011@1"+"2012@1"+"2013@1"+"2014@1"+"2015@1"+"2016@1"+"2017@1"+"2018@1")/20
+("ndvi_1999_2018@1"+"ndvi_1999_2018@2"+"ndvi_1999_2018@3"+"ndvi_1999_2018@4"+"ndvi_1999_2018@5"+"ndvi_1999_2018@6"+"ndvi_1999_2018@7"+"ndvi_1999_2018@8"+"ndvi_1999_2018@9"+"ndvi_1999_2018@10"+"ndvi_1999_2018@11"+"ndvi_1999_2018@12"+"ndvi_1999_2018@13"+"ndvi_1999_2018@14"+"ndvi_1999_2018@15"+"ndvi_1999_2018@16"+"ndvi_1999_2018@17"+"ndvi_1999_2018@18"+"ndvi_1999_2018@19"+"ndvi_1999_2018@20")/20
 ```
 
 + (3) Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
@@ -180,10 +180,53 @@ Tienes que entregar un documento de word o libre office con lo siguiente:
 
 - Captura de pantalla en la que se vea el punto que has seleccionado, con una ortofoto de fondo y con la capa de tendencia de NDVI (*tau.tif*).
 - Gráfica de la serie temporal en ese punto. Para ello usa el plugin de QGIS descrito más arriba. 
-- Breve texto que explique la situación que has interpretado. Por ejemplo: en esta zona se observa una fuerte tendencia al crecimiento de la vegetación desde 2000. Eso se observa también en las ortofotos de la época. Creo que se debe a que la zona está recién reforestada.
+- Breve texto que explique la situación que has interpretado. Por ejemplo: "en esta zona se observa una fuerte tendencia al crecimiento de la vegetación desde 2000. Eso se observa también en las ortofotos de la época. Creo que se debe a que la zona está recién reforestada.". Trata de proponer causas que expliquen los cambios observados.
 - Extra: Si además identificas algún otro lugar (y lo describes) en el que haya mucho NDVI (valores del promedio de NDVI altos) y tendencias descendentes (decaimiento forestal) tendrás mejor calificación.
 
 
 
+Este ejercicio se calificará según los criterios de la siguiente rúbrica:
 
 
+
++ Selección del punto a analizar. Se evalúa la relevancia del punto elegido en función de los objetivos del ejercicio.
+  + **0 puntos**: No entrega.
+  + **1 punto**: El punto seleccionado no contiene vegetación o error similar.
+  + **2 puntos**: El punto seleccionado no tiene interés porque no hay cambios en el NDVI.
+  + **3 puntos**: Los cambios de NDVI en el punto seleccionado no pueden explicarse por cambios en la estructura del bosque.
+  + **4 puntos**: Hay una historia de cambios de uso del suelo que explica los cambios en el NDVI.
+  + **5 puntos**: Has utilizado también el NDVI promedio como criterio para seleccionar puntos.
++ Descripción de la "historia" asociada al punto seleccionado. Se evalúa en qué medida has establecido correctamente las relaciones entre estructura y funcionamiento.
+  + **0 puntos**: No entrega.
+  + **1 punto**: En la descripción aportada no se explica la relación entre cambios en la estructura del bosque y NDVI.
+  + **2 puntos**: La historia que has contado no es consistente con la serie temporal de NDVI.
+  + **3 puntos**: Describes adecuadamente las relaciones estructura-funcionamiento, pero no propones razones que expliquen los cambios ocurridos.
+  + **4 puntos**: Adecuada descripción de relaciones estructura-funcionamiento y explicación de las posibles razones que la explican.
+  + **5 puntos**: Además, las razones argumentadas son plausibles.
++ Presentación. Se evalúa el manejo de SIG en este criterio.
+  + **0 puntos**: No entrega.
+  + **1 punto**: No incluye elementos gráficos.
+  + **2 puntos**: Se incluye solo o el mapa o la gráfica.
+  + **3 puntos**: Están tanto el mapa como la gráfica, pero con gamas de colores inadecuados y mal presentados.
+  + **4 puntos**: Presentación cuidada: mapas bien representados.
+  + **5 puntos**: Además, incluye material extra (ej. esquemas, otros mapas, etc.)
+
+
+
+## Vídeos de las sesiones
+
+Abajo puedes ver las sesiones de los diferentes grupos medianos. Todos los vídeos están ocultos en youtube. Esto quiere decir que solo son accesibles si tienes el enlace.
+
++ **GM-1**
+
++ **GM-2**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AT2KjIAp5i8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
++ **GM-3**
+
++ **GM-4**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p4Hke_De8hg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
++ **GM-5**
+
++ **GM-6**
