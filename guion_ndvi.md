@@ -76,7 +76,7 @@ El conjunto de procedimientos de agrupación y análisis de datos que realizarem
   - Ve copiando lo que va apareciendo a continuación.
 - (1) Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. 
 
-```{r setup, include=FALSE}
+```{r}
 ## Definimos directorio de trabajo y cargamos los paquetes necesarios
 setwd("/Users/fjbonet_trabajo/Downloads/ndvi")
 
@@ -145,7 +145,7 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
   + Instala un plugin llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
   + Selecciona la capa "_ndvi_1999_2018_" en QGIS.
   + Haz click en el botón del plugin que acabas de instalar.
-  + Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 1999 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year".
+  + Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 1999 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 1999;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018. 
   + Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
 
 
@@ -239,3 +239,4 @@ Abajo puedes ver las sesiones de los diferentes grupos medianos. Todos los víde
 + **GM-5**
 
 + **GM-6**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BFxWpRQ6oJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
