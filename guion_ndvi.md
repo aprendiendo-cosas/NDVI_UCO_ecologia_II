@@ -60,7 +60,7 @@ Para caracterizar la serie temporal de NDVI y para calcular el promedio de los m
   + [Imágenes de NDVI anuales (NDVI_maximo_anual.zip)](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/NDVI_maximo_anual.zip). Es un archivo zip. Descomprímelo en la carpeta en la que vayas a trabajar.
   + [Delimitación del Patriarca (patriarca.zip)](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/patriarca.zip). Es un fichero de formas poligonal que delimita la finca del Patriarca. Ponlo en la misma carpeta en la que has puesto el resto del material.
 
-El conjunto de procedimientos de agrupación y análisis de datos que realizaremos se puede ver en el siguiente esquema (puedes hacer zoom en él seleccionando la lupa que hay en la parte inferior). Dicho esquema se puede descargar aquí en formato editable (usando una aplicación llamada [diagrams.net](https://www.diagrams.net/))
+El conjunto de procedimientos de agrupación y análisis de datos que realizaremos se puede ver en el siguiente esquema (puedes hacer zoom en él seleccionando la lupa que hay en la parte inferior). Dicho esquema se puede descargar [aquí](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/imagenes/flujograma_NDVI.png) en formato editable (usando una aplicación llamada [diagrams.net](https://www.diagrams.net/))
 
 
 
@@ -225,6 +225,8 @@ Este ejercicio se calificará según los criterios de la siguiente rúbrica:
 Abajo puedes ver las sesiones de los diferentes grupos medianos. Todos los vídeos están ocultos en youtube. Esto quiere decir que solo son accesibles si tienes el enlace.
 
 + **GM-1**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tmCDw3jBTEA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 + **GM-2**
 
