@@ -56,10 +56,17 @@ De manera más concreta, durante esta sesión haremos lo siguiente:
 ## Secuencia de acciones a realizar
 
 Para caracterizar la serie temporal de NDVI y para calcular el promedio de los máximos de NDVI daremos los pasos descritos en las siguientes secciones. Pero antes, es importante descargar la información de partida:
+
   + [Imágenes de NDVI anuales (NDVI_maximo_anual.zip)](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/NDVI_maximo_anual.zip). Es un archivo zip. Descomprímelo en la carpeta en la que vayas a trabajar.
   + [Delimitación del Patriarca (patriarca.zip)](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/main/geoinfo/patriarca.zip). Es un fichero de formas poligonal que delimita la finca del Patriarca. Ponlo en la misma carpeta en la que has puesto el resto del material.
 
-### Caracterización de la serie temporal de NDVI
+El conjunto de procedimientos de agrupación y análisis de datos que realizaremos se puede ver en el siguiente esquema (puedes hacer zoom en él seleccionando la lupa que hay en la parte inferior). Dicho esquema se puede descargar aquí en formato editable (usando una aplicación llamada [diagrams.net](https://www.diagrams.net/))
+
+
+
+<iframe frameborder="0" style="width:100%;height:895px;" src="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=flujograma_NDVI.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D130EfHzJJZ6LCvhV-ZiTvWlIHXXWXDulC%26export%3Ddownload"></iframe>
+
+### Caracterización de la serie temporal de NDVI	
 
 - (0) Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo.
 - Ve copiando y pegando el código que aparece abajo en un archivo de R. Para crear dicho archivo haz lo siguiente:
@@ -85,7 +92,7 @@ library(Kendall)
 ```
 
 
-- (2) Crea una *pila* de archivos que contiene todos los archivos con extensión *.tiff* que estén en tu carpeta de trabajo. Create***** a stack containing all _.tiff_ files created by GEE.
+- (2) Crea una *pila* de archivos que contiene todos los archivos con extensión *.tiff* que estén en tu carpeta de trabajo.
 
      - Primero creamos una lista con los nombres de todos los archivos con extensión *tif* que hay en tu carpeta de trabajo. Ten cuidado porque si has cargado antes los archivos .tif en QGIS es posible que se hayan creado otros archivos con extensión *.tif.xml*. Estos archivos también serán seleccionados por la función *list.files* que se describe más abajo. Borra o mueve todos los archivos con tiff en el nombre que no sean los que corresponden a las imágenes de NDVI máximo anual. 
      - Luego usamos la función *slack* para crear una pila de archivos con los tif anteriores. Se crea un tipo de objeto llamado [*RasterStack*](https://www.rdocumentation.org/packages/raster/versions/3.0-12/topics/stack). Es una colección de capas raster que tienen la misma extensión y resolución espacial. 
